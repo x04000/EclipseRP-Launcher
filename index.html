@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EclipseRP • Descarga del Launcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg1: #0b0b12;
+            --bg2: #101225;
+            --pri: #8a7dff;
+            --sec: #00e0ff;
+            --txt: #e8e8f3;
+            --mut: #b7b8c6;
+            --glass: rgba(255, 255, 255, .06);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--txt);
+            background: radial-gradient(1200px 600px at 10% -10%, #1a1e3a 0%, transparent 60%), radial-gradient(1000px 600px at 90% 0%, #281a3a 0%, transparent 60%), linear-gradient(180deg, var(--bg1), var(--bg2));
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .grid {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(8px);
+            background: linear-gradient(180deg, rgba(8, 8, 16, .7), rgba(8, 8, 16, .35));
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            z-index: 50
+        }
+
+        .navin {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: -150px;
+            text-decoration: none;
+            color: var(--txt);
+            cursor: default;
+            transform: scale(1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .brand:hover {
+            transform: scale(1.1);
+        }
+
+        .logo {
+            width: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .name {
+            font-family: Cinzel, serif;
+            font-weight: 700;
+            letter-spacing: .5px;
+            font-size: 28px
+        }
+
+        .nav a.btn {
+            padding: 10px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #0b0b12;
+            background: linear-gradient(90deg, var(--pri), var(--sec));
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(138, 125, 255, .28);
+            margin-right: -150px;
+            transform: scale(1);
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .nav a.btn:hover {
+            transform: scale(1.1);
+        }
+
+        .hero {
+            position: relative;
+            padding: 96px 0 48px
+        }
+
+        .shine {
+            position: absolute;
+            inset: -60px -40px auto -40px;
+            height: 360px;
+            background: radial-gradient(closest-side, rgba(138, 125, 255, .25), transparent 60%);
+            filter: blur(30px);
+            pointer-events: none
+        }
+
+        .title {
+            font-family: Cinzel, serif;
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.05;
+            letter-spacing: .5px;
+            text-align: center;
+            margin: 0 0 16px;
+            padding: -24px;
+            text-shadow: 0 2px 24px rgba(138, 125, 255, .25);
+            cursor: default;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .title:hover {
+            transform: scale(1.1);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: clamp(16px, 2.2vw, 20px);
+            color: var(--mut);
+            max-width: 720px;
+            margin: 0 auto 28px
+        }
+
+        .cta {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta a{
+            transform: scale(1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .cta a:hover {
+            transform: scale(1.05)
+        }
+
+        .primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 14px;
+            background: linear-gradient(90deg, var(--pri), var(--sec));
+            color: #0b0b12;
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: .2px;
+            box-shadow: 0 12px 36px rgba(0, 224, 255, .22), 0 8px 20px rgba(138, 125, 255, .22)
+        }
+
+        .ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--txt);
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, .02)
+        }
+
+        .strip {
+            margin-top: 36px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            opacity: .9
+        }
+
+        .chip {
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .08);
+            background: rgba(255, 255, 255, .03);
+            font-size: 14px;
+            color: var(--mut);
+            cursor: default;
+        }
+
+        .features {
+            padding: 32px 0 8px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px
+        }
+
+        .card {
+            grid-column: span 6;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 18px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .25)
+        }
+
+        .card h3 {
+            font-family: Cinzel, serif;
+            margin: 0 0 8px;
+            font-size: 20px
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--mut);
+            line-height: 1.6
+        }
+
+        @media (min-width: 920px) {
+            .card {
+                grid-column: span 3
+            }
+        }
+
+        .dl {
+            padding: 56px 0 24px
+        }
+
+        .dl h2 {
+            text-align: center;
+            font-family: Cinzel, serif;
+            font-size: clamp(28px, 4vw, 40px);
+            margin: 0 0 10px
+        }
+
+        .dl p {
+            text-align: center;
+            color: var(--mut);
+            margin: 0 0 20px
+        }
+
+        .btnrow {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+
+        .btn-os {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: #0b0b12;
+            background: linear-gradient(90deg, var(--pri), var(--sec));
+            font-weight: 800;
+            box-shadow: 0 10px 30px rgba(0, 224, 255, .2)
+        }
+
+        .btn-os.secondary {
+            background: rgba(255, 255, 255, .06);
+            color: var(--txt);
+            border: 1px solid rgba(255, 255, 255, .12)
+        }
+
+        .req {
+            padding: 24px 0 56px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px
+        }
+
+        .req .box {
+            grid-column: span 12;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 18px;
+            padding: 22px;
+            backdrop-filter: blur(10px)
+        }
+
+        .req h4 {
+            margin: 0 0 8px;
+            font-family: Cinzel, serif
+        }
+
+        .req ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--mut);
+            line-height: 1.7
+        }
+
+        @media (min-width: 920px) {
+            .req .box {
+                grid-column: span 6
+            }
+        }
+
+        .gallery {
+            padding: 24px 0 80px
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-family: Cinzel, serif;
+            font-size: clamp(26px, 3.6vw, 36px);
+            margin: 0 0 14px
+        }
+
+        .gallery p {
+            text-align: center;
+            color: var(--mut);
+            margin: 0 0 26px
+        }
+
+        #launcher img{
+            display:block;
+            margin-inline:auto;
+            max-width:980px;
+            width:100%;
+            height:auto;
+            border-radius:22px;
+            border:1px solid rgba(255,255,255,.12);
+            box-shadow:0 20px 60px rgba(0,0,0,.35);
+            transform: scale(1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        #launcher img:hover{
+            transform: scale(1.05);
+        }
+
+        .shot {
+            display: block;
+            width: 100%;
+            max-width: 980px;
+            margin: 0 auto;
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .12);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .35)
+        }
+
+        .shot img {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #0f1020
+        }
+
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            padding: 22px 0 40px;
+            color: var(--mut);
+            text-align: center
+        }
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .75
+        }
+
+        .stars:before,
+        .stars:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-repeat: repeat;
+            background-size: 400px 400px;
+            animation: twinkle 18s linear infinite
+        }
+
+        .stars:before {
+            background-image: radial-gradient(2px 2px at 40px 60px, rgba(255, 255, 255, .8), transparent), radial-gradient(1px 1px at 120px 80px, rgba(255, 255, 255, .6), transparent), radial-gradient(1px 1px at 200px 140px, rgba(255, 255, 255, .4), transparent)
+        }
+
+        .stars:after {
+            background-image: radial-gradient(1px 1px at 100px 200px, rgba(255, 255, 255, .7), transparent), radial-gradient(2px 2px at 300px 120px, rgba(255, 255, 255, .5), transparent), radial-gradient(1px 1px at 240px 260px, rgba(255, 255, 255, .5), transparent);
+            animation-duration: 24s
+        }
+
+        @keyframes twinkle {
+            0% {
+                transform: translateY(0)
+            }
+
+            100% {
+                transform: translateY(-400px)
+            }
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stars"></div>
+    <header class="nav">
+        <div class="grid navin">
+            <a class="brand" href="#top">
+                <img class="logo" src="assets/logoecl.png" alt="EclipseRP">
+                <span class="name">EclipseRP</span>
+            </a>
+            <a class="btn" href="https://github.com/x04000/EclipseRP-Launcher/releases/latest">Descargar launcher</a>
+        </div>
+    </header>
+
+    <main class="grid hero" id="top">
+        <div class="shine"></div>
+        <h1 class="title">EclipseRP Launcher</h1>
+        <p class="subtitle">Instala y actualiza EclipseRP Launcher con un solo clic. Conexión rápida al servidor, actualizaciones automáticas
+            y más funciones para que solo te preocupes de rolear.</p>
+        <div class="cta">
+            <a class="primary" href="https://github.com/x04000/EclipseRP-Launcher/releases/latest" id="dlWin" target="_blank">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4l7 2v6L4 10V4zm9 2l7-2v6l-7 2V6zM4 12l7 2v6l-7-2v-6zm9 2l7-2v6l-7 2v-6z"
+                        fill="currentColor" />
+                </svg>
+                Descargar para Windows</a>
+            <a class="ghost" href="http://eclipsegmod.com" target="_blank" rel="noopener">
+                 <svg class="icon" viewBox="0 0 71 55" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.4151C45.5603 0.3985 45.468 0.4408 45.4204 0.525C44.7963 1.6353 44.105 3.0839 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3405 4.2216C26.8564 3.0581 26.1412 1.6353 25.5134 0.525C25.4658 0.4408 25.3735 0.3985 25.2811 0.4151C20.2073 1.2916 15.3546 2.8214 10.8293 4.8978C10.7884 4.9155 10.7521 4.9428 10.7263 4.9781C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335257 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5474 18.305 54.513 18.3638 54.4373C19.7295 52.5728 20.9469 50.606 21.9907 48.5381C22.0523 48.4171 21.9935 48.2735 21.8676 48.2251C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.189 45.5045 16.1781 45.2999 16.3123 45.2088C16.7085 44.9364 17.104 44.6499 17.4886 44.3646C17.5534 44.315 17.6433 44.3033 17.7169 44.3352C29.2558 49.8011 41.8354 49.8011 53.2727 44.3352C53.3463 44.3005 53.4362 44.3122 53.501 44.3618C53.8856 44.6471 54.2811 44.9364 54.6773 45.2088C54.8115 45.2999 54.8033 45.5045 54.6631 45.5858C52.8944 46.6197 51.0557 47.4931 49.122 48.2223C48.9961 48.2707 48.9402 48.4171 49.0018 48.5381C50.067 50.6032 51.2844 52.5699 52.6248 54.4344C52.6806 54.513 52.7813 54.5474 52.8737 54.5195C58.6462 52.7249 64.5288 50.0174 70.6017 45.5576C70.655 45.5182 70.688 45.4562 70.6936 45.3914C72.1747 30.0791 68.2147 16.7757 60.2375 4.9781C60.2145 4.9428 60.1782 4.9155 60.1373 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.2801 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.937 34.1136 40.937 30.1693C40.937 26.225 43.7636 23.0133 47.3178 23.0133C50.8999 23.0133 53.7545 26.2532 53.6985 30.1693C53.6985 34.1136 50.8999 37.3253 47.3178 37.3253Z"/>
+                </svg>
+                Únete al Discord
+            </a>
+        </div>
+        <div class="strip">
+            <span class="chip">Actualizaciones automáticas</span>
+            <span class="chip">Conexión rápida</span>
+            <span class="chip">Espera disponibilidad del servidor</span>
+        </div>
+    </main>
+
+    <section class="grid gallery" id="launcher">
+        <h2>Vista previa del Launcher</h2>
+        <img src="assets/launcher.png" alt="EclipseRP Launcher">
+    </section>
+
+    <footer class="grid footer">
+        <div>© <span id="y"></span> EclipseRP. Todos los derechos reservados.</div>
+    </footer>
+
+    <script>
+        const y = document.getElementById('y'); if (y) y.textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
